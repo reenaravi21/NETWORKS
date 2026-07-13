@@ -1,0 +1,13 @@
+//Convert string to number//
+
+long long stringToNumber(const char* str)
+{
+    long long number = 0;
+
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        number = number * 10 + (str[i] - '0');
+    }
+
+    return number;
+}
