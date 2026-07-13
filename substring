@@ -1,0 +1,28 @@
+// substring matching pattern //
+#include <string.h>
+#include <stdbool.h>
+
+bool hasMatch(char* s, char* p)
+{
+    char *star = strchr(p, '*');
+
+    int preLen = star - p;
+    int sufLen = strlen(star + 1);
+    int sLen = strlen(s);
+
+    for (int i = 0; i <= sLen - preLen; i++)
+    {
+        if (strncmp(s + i, p, preLen) == 0)
+        {
+            for (int j = i + preLen; j <= sLen - sufLen; j++)
+            {
+                if (strncmp(s + j, star + 1, sufLen) == 0)
+                {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}
